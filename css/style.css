@@ -1,0 +1,280 @@
+/* untuk font */
+@font-face {
+    font-family: "Bebas Neue";
+    src: url(../font/bebasneue-regular-webfont.woff) format('woff');
+    /* file font relatif thdp file css. sehingga dari file css, kita 
+    harus keluar dulu, baru ke folder font. */
+}
+
+
+/* style utama */
+body{
+    font-size: 18px;
+    line-height: 36px;
+    font-family: "Bebas Neue",'Arial Narrow','arial',sans-serif;
+    /* kita berikan follback untuk fontnya */
+    background-color: #ddd;
+}
+/* style untuk body secara umum/keseluruhan */
+
+h1{
+    font-size: 80px;
+    margin: 50px 0;
+    text-align: center;
+    text-shadow: 1px 1px 1px white;
+    /* x y blur color */
+}
+
+.container{
+    width: 600px;
+    background-color: white;
+    margin: auto;
+    padding: 25px;
+    box-shadow: 0 0 3px 3px rgba(0,0,0,.25);
+    /* x y blur spread color (transparant)  */
+    border-radius: 5px;
+}
+
+
+.gallery li{
+    /* ukuran width dan heightnya disamakan dengan 
+    pixel dari gambar thumbnailnya */
+    width: 150px;
+    height: 150px;
+    /* overflow: hidden; */
+    /* overflow disini menghalangi lapisan abu-abu pada
+    gambar thumbnail bulat yang kita buat, sehingga tidak muncul. 
+    maka kita nonaktifkan overflow hiddennya. */
+    /* overflow hidden diatas sebelumnya digunakan agar gambar
+    bentuknya menjadi bulat. namun sudah kita nonaktifkan */
+    border: 5px solid #666;
+    /* border ini untuk bulat gambarnya */
+    float: left;
+    /* float left agar gambar menjadi bersebelahan.
+    Ingat bahwa display default dari li adalah block */
+   margin: 20px;
+   /* margin right agar gambar tidak terlalu menempel satu
+   sama lain. */
+    position: relative;
+    /* kita buat posisinya agar menjadi di dimensi yang sama 
+    dengan position absolute pada gallery li span */
+
+}
+
+.gallery li,
+.gallery li img,
+.gallery li span{
+    border-radius: 50%;
+/* kita buat semuanya menjadi bulat */
+}
+
+/* gallery li span dibuat agar ketika disorot, 
+muncul lapisan abu-abu dan tulisannya. */
+.gallery li span{
+    display: block;
+    /*  ingat default display dari span adalah inline.
+    kita ubah menjadi block agar dapat kita ubah dan atur 
+    height dan width nya*/
+    width: 150px;
+    height: 150px;
+    /* widrh dan height ukurannya harus disamakan 
+    dengan pixel gambar thumbnailnya */
+    background-color: rgba(200,200,200,.5);
+    position: absolute;
+    top: 0;
+     /* agar lapisan abu2/transparan tepat berada di depan gambar, 
+    kita pakai position absolute dan top 0. tapi ingat juga untuk memberikan 
+    position relative pada parent terdekatnya. */
+    text-align: center;
+    line-height: 150px;
+    /* kita buat agar tulisan span tepat di tengah. */
+    color: #333;
+    text-shadow: 1px 1px 1px #ddd;
+    opacity: 0;
+    /* kita buat opacity 0 karena kita ingin agar saat disorot,
+    tulisan span nya baru muncul */
+    transform: scale(0) rotate(0);
+    /* scale 0 dan rotate 0 agar tidak kelihatan pada awalnya. 
+    akan muncul pada saat kita hover. */
+    transition: .3s;
+    /* transisi saat hover span transformnya */
+}
+
+.gallery li a:hover span {
+    opacity: 1; 
+    /* jadi saat kita sorot span yg tadi opacity 0, jadi 1. atau bahasa lainnya
+    muncul. */
+    transform: scale(1) rotate(360deg);
+    /* scale satu untuk size normalnya */
+    /* kita buat agar saat muncul, jadi berputar dahulu  dengan rotate*/
+}
+
+/* clear disini untuk membenarkan elemen gallery li yang runtuh,
+setelah kita berikan float left */
+.clear{
+    clear: both;
+}
+
+
+/*  untuk overlay */
+/* overlay ini adalah keadaan awal */
+
+.overlay{
+    /* kita buat agar overlay memenuhi semua layar. 
+    ingat jika position fixed, maka dia berfokus pada window kita */
+    width: 0;
+    height: 0;
+    /* jadi pada keadaan awal ini, keadaannya belum tarik menarik. 
+    sehingga overlay tidak akan muncul. baru akan muncul saat 
+    overlay target */
+    overflow: hidden;
+    /* width height 0 dan overflow hidden agar gambar fullnya tidak
+    muncul/tampak terlebih dahulu. akan muncul baru pada saat 
+    target */
+    position: fixed;
+    /* kita buat position fixed agar saat discroll, 
+    overlaynya tidak terganggu. */
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0);
+    /* bg color transparansinya 0 untuk membuat transisi
+    pada saat kita target. */
+    z-index: 9999;
+    /* kita buat agar overlay ini berada di tumpukan terdepan dari
+    elemen yang nonstatic */
+    transition: 0.3s;
+    text-align: center;
+    /* agar gambar fullnya berada di tengah */
+    padding: 100px 0;
+}
+
+/* Kelas semu :target digunakan untuk memberi gaya
+pada elemen target URL yang berisi pengidentifikasi fragmen. */
+/*  pada saat ditarget, baru overlay memenuhi layarnya, lihat 
+pada width dan height nya*/
+.overlay:target{
+    width: auto;
+    height: auto;
+    /* width dan height auto agar dia bisa menyesuaikan dgn
+    ukuran foto full pada saat kita klik */
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.7);
+    /* bg color transparansi nya jadi .7 dari yang 0 pada overlay awal */
+}
+
+/* overlay img ini untuk gambar full */
+.overlay img {
+    max-height: 100%;
+    /* max height  sesuai dgn tinggi browsernya. jadi saat diubah-ubah
+    ukuran browser, besar gambar akan tetap 100% relatif thdp
+    ukuran browser*/
+    box-shadow: 2px 2px 7px rgba(0,0,0,0.5);
+}
+
+/* cara bacanya: pada saat overlay kita target, maka 
+img di dalamnya akan..... */
+.overlay:target img{
+    animation: fade;
+    animation-duration: 1s;
+    /* kita panggil nama animasi fade dan operasinya */
+    border-radius: 0;
+    /* border radius 0 agar gambar berbentuk sama seperti bentuk aslinya. */
+}
+
+/* bacanya: class close yang ada di dalam class overlay */
+.overlay .close {
+    position: absolute;
+    /* position absolute agar kita bisa pindah pindah */
+    top: 50px;
+    left: 50%;
+    margin-left: -20px;
+    color: aliceblue;
+    text-decoration: none;
+    background-color: black;
+    border: 1px solid white;
+    line-height: 14px;
+    padding: 5px;
+    opacity: 0;
+    /* opacity 0 agar di keadaan awal, 
+    tombol close nya itu tidak ada dulu. baru muncul pada saat 
+    kita target dan animasikan. */
+}
+
+/* bacanya: pada saat overlay ditarget, maka class
+closenya atau tombol closenya.... */
+.overlay:target .close{
+    animation: slideDownFade .5s .5s;
+    /* nama durasi delay */
+    animation-fill-mode: forwards;
+    /* ingat bahwa defaultnya animasi kembali ke keadaan awal ,
+    dan keadaan awalnya diatas adalah opacity 0. jadi kita buat 
+    agar dia berhenti di keadaan terakhir yang opacitynya sudah kita 
+    atur jadi 1*/
+}
+
+.overlay:target .next,
+.overlay:target .previous {
+    animation: fade .5s .5s forwards;
+}
+
+/* navigasi */
+
+.next, .previous{
+    width: 57px;
+    height: 57px;
+    background-image: url(../img/nextt.png);
+    position: absolute;
+    /* position absolute agar letaknya bisa kita atur */
+    text-indent: -9999px;
+    top: 250px;
+    margin-left: 10px;
+    opacity: 0;
+}
+
+.previous{
+    background-image: url(../img/previouss.png);
+    /* lihat di atas, kan kita buat next previous dua duanya
+    sama pakai gambar nextt.png , disini kita ubah
+    class previousnya pakai previouss.png */
+    margin-left: -65px;
+}
+
+
+
+/* animasi */
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes zoomDanFade {
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideDownFade {
+    0%{
+        opacity: 0;
+        margin-top: -20px;
+    }
+    /* 0% keadaan awal */
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+    /* 100% keadaan akhir */
+}

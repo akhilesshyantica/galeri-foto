@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- kita pisahkan style utama dengan reset. 
+    biasakan sebelum membuat website, kita  buat secara terpisah 
+    css reset. -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+        <h1>Justice League</h1>
+        <!-- gallery akan disimpan pada sebuah container -->
+        <div class="container">
+            <!-- kita gunakan ul untuk mengidentifikasi gambar2
+            yang akan kita gunakan pada projek ini. -->
+            <ul class="gallery">
+
+                <li>
+                    <!-- agar gambar bisa diklik, maka harus kita simpan
+                    pada sebuah anchor -->
+                    <!-- #gambar-1 agar nnti saat kita klik, dia mentrigger 
+                    ke elemen tujuannya yaitu id gambar-1 untuk gambar fullnya -->
+                    <a href="#gambar-1">
+                        <img src="img/thumb/Aquaman-thumbnail.jpg" alt="Aquaman">
+                        <span>Aquaman</span>
+                        <!-- span ini digunakan untuk caption -->
+                    </a>
+
+                    <!-- div class overlay dibuat untuk tampilan layar hitam
+                    transparant-->
+                    <div class="overlay" id="gambar-1">
+                        <a href="#" class="close">x close</a>
+                        <!-- href # agar ngilangin id gambar-1 nya, dan kembali 
+                        ke halaman awal mula/itu sendiri -->
+                        <!-- kita buat anchor untuk close gambar -->
+
+                        <!-- kita buat previous dan nextnya diantara
+                        img gambar fullnya -->
+                        <!-- perhatikan untuk tujuan/href dari gambar sebelum dan
+                        sesudahnya! -->
+                        <a href="#gambar-6" class="previous">previous</a>
+                        <img src="img/full/Aquaman.jpg" alt="Aquaman">
+                        <!-- pada saat diklik, kita panggil gambar fullnya -->
+                        <a href="#gambar-2" class="next">next</a>
+                        
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#gambar-2">
+                        <img src="img/thumb/Batman-thumbnail.jpg" alt="Batman">
+                        <span>Batman</span>
+                    </a>
+
+                    <div class="overlay" id="gambar-2">
+                        <a href="#" class="close">x close</a>
+
+                        <a href="#gambar-1" class="previous">previous</a>
+                        <img src="img/full/Batman.jpg" alt="Batman">
+                        <a href="#gambar-3" class="next">next</a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#gambar-3">
+                        <img src="img/thumb/Cyborg-thumbnail.jpg" alt="Cyborg">
+                        <span>Cyborg</span>
+                    </a>
+
+                    <div class="overlay" id="gambar-3">
+                        <a href="#" class="close">x close</a>
+
+                        <a href="#gambar-2" class="previous">previous</a>
+                        <img src="img/full/Cyborg.jpg" alt="Cyborg">
+                        <a href="#gambar-4" class="next">next</a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#gambar-4">
+                        <img src="img/thumb/Flash-thumbnail.jpg" alt="Flash">
+                        <span>Flash</span>
+                    </a>
+
+                    <div class="overlay" id="gambar-4">
+                        <a href="#" class="close">x close</a>
+
+                        <a href="#gambar-3" class="previous">previous</a>
+                        <img src="img/full/Flash.jpg" alt="Flash">
+                        <a href="#gambar-5" class="next">next</a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#gambar-5">
+                        <img src="img/thumb/Superman-thumbnail.jpg" alt="Superman">
+                        <span>Superman</span>
+                    </a>
+
+                    <div class="overlay" id="gambar-5">
+                        <a href="#" class="close">x close</a>
+
+                        <a href="#gambar-4" class="previous">previous</a>
+                        <img src="img/full/Superman.jpg" alt="Superman">
+                        <a href="#gambar-6" class="next">next</a>
+
+                    </div>
+                </li>
+
+                <li>
+                    <a href="#gambar-6">
+                        <img src="img/thumb/WonderWoman-thumbnail.jpg" alt="Wonder Woman">
+                        <span>Wonder Woman</span>
+                    </a>
+
+                    <div class="overlay" id="gambar-6">
+                        <a href="#" class="close">x close</a>
+
+                        <a href="#gambar-5" class="previous">previous</a>
+                        <img src="img/full/WonderWoman.jpg" alt="Wonder Woman">
+                        <a href="#gambar-1" class="next">next</a>
+
+                    </div>
+                </li>
+
+                <div class="clear"></div>
+                <!-- jangan lupa untuk berikan class clear di akhir li nya,
+                    tepat setelah  elemen terakhir yang dibuat,
+                    dari pembungkus yang runtuh -->
+            </ul>
+        </div>
+
+
+
+
+</body>
+</html>
